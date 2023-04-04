@@ -65,6 +65,25 @@ const add = (req, res) => {
     });
 };
 
+const update = (req, res) => {
+  const cart = req.body;
+  cart.id = parseInt(req.params.id, 10);
+
+  models.cart
+    .update(cart)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const destroy = (req, res) => {
   models.cart
     .delete(req.params.id)
@@ -86,5 +105,6 @@ module.exports = {
   read,
   edit,
   add,
+  update,
   destroy,
 };

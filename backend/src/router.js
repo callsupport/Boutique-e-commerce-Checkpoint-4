@@ -29,6 +29,8 @@ router.delete("/categories/:id", productItemsControllers.destroy);
 router.get("/cart", cartControllers.browse);
 router.get("/cart/:id", cartControllers.read);
 router.post("/cart", cartControllers.add);
+router.patch("/cart/:id", cartControllers.update);
+
 router.delete("/cart/:id", cartControllers.destroy);
 
 module.exports = router;

@@ -7,15 +7,15 @@ class CartManager extends AbstractManager {
 
   insert(cart) {
     return this.database.query(
-      `insert into ${this.table} (user_id, item_id) values (?, ?)`,
-      [cart.userId, cart.itemId]
+      `insert into ${this.table} (user_id, item_id, quantity) values (?,?,?)`,
+      [cart.userId, cart.itemId, cart.quantity]
     );
   }
 
   update(cart) {
     return this.database.query(
-      `update ${this.table} set user_id = ?, set item_id = ? where id = ?`,
-      [cart.id, cart.userId, cart.itemId]
+      `update ${this.table} set user_id = ?, item_id = ?, quantity = ? where id = ?`,
+      [cart.userId, cart.itemId, cart.quantity, cart.id]
     );
   }
 }

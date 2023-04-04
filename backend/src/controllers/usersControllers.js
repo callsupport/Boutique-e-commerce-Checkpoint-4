@@ -103,11 +103,16 @@ const destroy = (req, res) => {
 };
 
 const login = async (req, res) => {
-  const user = req.body;
+  const users = req.body;
 
-  const [persistedUser] = await models.users.findByEmail(user.email);
+  const [persistedUser] = await models.users.findByEmail(users.email);
 
-  const verif = await verifyPassword(persistedUser[0].password, user.password);
+  if (!persistedUser[0]) {
+    res.sendStatus(401);
+    return;
+  }
+
+  const verif = await verifyPassword(persistedUser[0].password, users.password);
 
   if (verif) {
     delete persistedUser[0].password;

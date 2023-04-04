@@ -8,10 +8,11 @@ const passwordSchema = Joi.string()
   );
 
 const userSchema = Joi.object({
-  firstname: Joi.string().min(3).max(100).required(),
-  lastname: Joi.string().min(3).max(100).required(),
+  firstName: Joi.string().min(3).max(100).required(),
+  lastName: Joi.string().min(3).max(100).required(),
   email: Joi.string().email().required(),
   password: passwordSchema.required(),
+  address: Joi.string().min(3).max(100).required(),
 });
 
 const validateUser = (user) => {
