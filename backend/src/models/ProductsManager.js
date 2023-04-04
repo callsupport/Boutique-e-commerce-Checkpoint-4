@@ -5,12 +5,6 @@ class ProductsManager extends AbstractManager {
     super({ table: "products" });
   }
 
-  findAllProducts() {
-    return this.database.query(
-      `select ${this.table}.*, cart.* from  ${this.table} JOIN cart ON products.products_id = cart.products_products_id `
-    );
-  }
-
   insert(products) {
     return this.database.query(
       `insert into ${this.table} (
