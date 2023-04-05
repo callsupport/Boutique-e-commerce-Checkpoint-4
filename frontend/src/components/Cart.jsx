@@ -1,7 +1,7 @@
 import React from "react";
 import useCart from "./useCart";
 
-const Cart = () => {
+function Cart() {
   const { cart, removeFromCart } = useCart();
 
   return (
@@ -12,7 +12,7 @@ const Cart = () => {
           <li key={item.product.id}>
             {item.product.name} - {item.quantity} x {item.product.price} € ={" "}
             {item.quantity * item.product.price} €
-            <button onClick={() => removeFromCart(item)}>
+            <button type="button" onClick={() => removeFromCart(item)}>
               Remove from Cart
             </button>
           </li>
@@ -20,6 +20,6 @@ const Cart = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default Cart;

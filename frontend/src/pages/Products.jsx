@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import expressAPI from "../services/expressAPI";
 
 import ProductsCards from "../components/ProductsCards";
-
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "../components/Navbar";
 // eslint-disable-next-line import/no-unresolved
 import vector from "../assets/icons/vector.png";

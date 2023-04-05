@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import expressAPI from "../services/expressAPI";
 import toastError from "../services/toastService";
-
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import vector from "../assets/icons/Vector.png";

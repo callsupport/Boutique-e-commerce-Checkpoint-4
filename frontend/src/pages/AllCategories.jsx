@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import expressAPI from "../services/expressAPI";
 
 import ProductsCards from "../components/ProductsCards";
-
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 // eslint-disable-next-line import/no-unresolved
