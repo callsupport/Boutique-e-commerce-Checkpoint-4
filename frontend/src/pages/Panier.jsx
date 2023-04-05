@@ -1,6 +1,8 @@
 import Footer from "@components/Footer";
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "@components/Navbar";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function Panier() {
   const saveBasket = (basket) => {
@@ -8,25 +10,24 @@ function Panier() {
   };
 
   const getBasket = () => {
-    let basket = localStorage.getItem("basket");
+    const basket = localStorage.getItem("basket");
     if (basket === null) {
       return [];
-    } else {
-      return JSON.parse(basket);
     }
+    return JSON.parse(basket);
   };
 
-  const addBasket = (product) => {
-    let basket = getBasket();
-    let foundProduct = basket.find((p) => p.id === product.id);
-    if (foundProduct !== undefined) {
-      foundProduct.quantity++;
-    } else {
-      product.quantity = 1;
-      basket.push(product);
-    }
-    saveBasket(basket);
-  };
+  // const addBasket = (product) => {
+  //   const basket = getBasket();
+  //   const foundProduct = basket.find((p) => p.id === product.id);
+  //   if (foundProduct !== undefined) {
+  //     foundProduct.quantity++;
+  //   } else {
+  //     product.quantity = 1;
+  //     basket.push(product);
+  //   }
+  //   saveBasket(basket);
+  // };
 
   const removeBasket = (product) => {
     let basket = getBasket();
@@ -35,8 +36,8 @@ function Panier() {
   };
 
   const changeQuantity = (product, quantity) => {
-    let basket = getBasket();
-    let foundProduct = basket.find((p) => p.id === product.id);
+    const basket = getBasket();
+    const foundProduct = basket.find((p) => p.id === product.id);
     if (foundProduct !== undefined) {
       foundProduct.quantity += quantity;
       if (foundProduct.quantity <= 0) {
@@ -48,18 +49,18 @@ function Panier() {
   };
 
   const getNumberProduct = () => {
-    let basket = getBasket();
+    const basket = getBasket();
     let numberProduct = 0;
-    for (let product of basket) {
+    for (const product of basket) {
       numberProduct += product.quantity;
     }
     return numberProduct;
   };
 
   const getTotalPrice = () => {
-    let basket = getBasket();
+    const basket = getBasket();
     let totalPrice = 0;
-    for (let product of basket) {
+    for (const product of basket) {
       totalPrice += product.price * product.quantity;
     }
     return totalPrice;
@@ -97,6 +98,7 @@ function Panier() {
                       </div>
                       <div className="flex justify-between items-center">
                         <button
+                          type="button"
                           className="text-sm text-gray-500 hover:text-red-500"
                           onClick={() => removeBasket(product)}
                         >
@@ -104,16 +106,23 @@ function Panier() {
                         </button>
                         <div>
                           <button
+                            type="button"
                             className="text-gray-500 hover:text-red-500"
                             onClick={() => changeQuantity(product, -1)}
                           >
                             -
                           </button>
-                          <button onClick={() => changeQuantity(product, -1)}>
+                          <button
+                            type="button"
+                            onClick={() => changeQuantity(product, -1)}
+                          >
                             -
                           </button>
                           <span className="mx-2">{product.quantity}</span>
-                          <button onClick={() => changeQuantity(product, 1)}>
+                          <button
+                            type="button"
+                            onClick={() => changeQuantity(product, 1)}
+                          >
                             +
                           </button>
                         </div>
@@ -153,10 +162,14 @@ function Panier() {
                 <p>Total</p>
                 <p>{getTotalPrice()} €</p>
               </div>
-
-              <button className="w-full bg-blue text-white rounded-lg py-3 font-bold">
-                Valider mon panier
-              </button>
+              <Link to="/confirmation">
+                <button
+                  type="button"
+                  className="w-full bg-blue text-white rounded-lg py-3 font-bold"
+                >
+                  Valider mon panier
+                </button>
+              </Link>
             </div>
           </div>
         </div>

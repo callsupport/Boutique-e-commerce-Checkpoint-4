@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CoffeeMachine from "../components/CoffeeMachine";

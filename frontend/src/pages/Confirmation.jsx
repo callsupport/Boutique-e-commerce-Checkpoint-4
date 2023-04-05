@@ -1,4 +1,5 @@
 import Footer from "@components/Footer";
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "@components/Navbar";
 import React from "react";
 

@@ -52,7 +52,7 @@ function Navbar() {
           <Link to="/moncompte" className="text-white mx-4 ">
             Mon compte
           </Link>
-          <Link to="/monpanier" className="text-white mx-4 mr-32">
+          <Link to="/panier" className="text-white mx-4 mr-32">
             Mon panier
           </Link>
         </div>

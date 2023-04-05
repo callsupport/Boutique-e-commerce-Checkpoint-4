@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import expressAPI from "../services/expressAPI";
 import ProductsCards from "../components/ProductsCards";
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -8,6 +9,7 @@ import Footer from "../components/Footer";
 import vector from "../assets/icons/vector.png";
 // eslint-disable-next-line import/no-unresolved
 import chevron from "../assets/images/chevron.svg";
+
 function Coques() {
   const [search] = useState("");
   const [products, setProducts] = useState([]);

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
 import expressAPI from "../services/expressAPI";
-import Products from "@pages/Categories";
 
 function ProductsCards({ name, description, price, category, image }) {
   const selectedimage = `${image}`;
 
   const [addedToCart, setAddedToCart] = useState(false);
-  const [product, setProduct] = useState([]);
+  const [product] = useState([]);
 
   const handleAddToCart = ({ userId, itemId, quantity }) => {
     expressAPI
@@ -19,7 +19,7 @@ function ProductsCards({ name, description, price, category, image }) {
       })
       .then(() => {
         setAddedToCart(true);
-        onAddToCart(Product);
+        // onAddToCart(Product);
       })
       .catch((error) => {
         console.error(error);

@@ -4,13 +4,13 @@ import { useState } from "react";
 import Footer from "@components/Footer";
 import toastError from "../services/toastService";
 import expressAPI from "../services/expressAPI";
-
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "../components/Navbar";
 import vector from "../assets/icons/Vector.png";
 
 function Creation() {
   const navigate = useNavigate();
-
+  // eslint-disable-next-line import/no-unresolved
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");

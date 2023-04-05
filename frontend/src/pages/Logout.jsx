@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+// eslint-disable-next-line import/no-unresolved
 import Navbar from "../components/Navbar";
 
 function Logout() {
