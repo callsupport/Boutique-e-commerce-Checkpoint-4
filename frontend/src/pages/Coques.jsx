@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-
 import expressAPI from "../services/expressAPI";
 import ProductsCards from "../components/ProductsCards";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 // eslint-disable-next-line import/no-unresolved
 import vector from "../assets/icons/vector.png";
 // eslint-disable-next-line import/no-unresolved
 import chevron from "../assets/images/chevron.svg";
-
 function Coques() {
   const [search] = useState("");
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     expressAPI.get(`/produits`).then((res) => {
@@ -24,6 +24,12 @@ function Coques() {
       elem.name.toLowerCase().includes(search.toLowerCase()) &&
       elem.category === "coque"
   );
+
+  const handleAddToCart = (product) => {
+    const newCartItems = [...cartItems, product];
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  };
 
   return (
     <div>
@@ -51,6 +57,7 @@ function Coques() {
               image={product.image}
               price={product.price}
               category={product.category}
+              onAddToCart={() => handleAddToCart(product)}
             />
           </div>
         ))}
@@ -64,4 +71,5 @@ function Coques() {
     </div>
   );
 }
+
 export default Coques;

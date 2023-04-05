@@ -7,8 +7,20 @@ export const useCurrentUserContext = () => useContext(CurrentUserContext);
 
 function CurrentUserContextProvider({ children }) {
   const [user, setUser] = useState("");
+  const [userId, setUserId] = useState(localStorage.getItem("userId") || null);
+  const [cartId, setCartId] = useState(localStorage.getItem("cartId") || null);
 
-  const userMemo = useMemo(() => ({ user, setUser }), [user]);
+  const userMemo = useMemo(
+    () => ({
+      user,
+      setUser,
+      userId,
+      setUserId,
+      cartId,
+      setCartId,
+    }),
+    [user, setUser, userId, setUserId, cartId, setCartId]
+  );
   return (
     <CurrentUserContext.Provider value={userMemo}>
       {children}
