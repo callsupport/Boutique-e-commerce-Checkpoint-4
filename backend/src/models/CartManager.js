@@ -5,17 +5,17 @@ class CartManager extends AbstractManager {
     super({ table: "cart" });
   }
 
-  insert(cart) {
+  insert(cart, userId) {
     return this.database.query(
       `insert into ${this.table} (user_id, item_id, quantity) values (?,?,?)`,
-      [cart.userId, cart.itemId, cart.quantity]
+      [userId, cart.itemId, cart.quantity]
     );
   }
 
-  update(cart) {
+  update(cart, userId) {
     return this.database.query(
       `update ${this.table} set user_id = ?, item_id = ?, quantity = ? where id = ?`,
-      [cart.userId, cart.itemId, cart.quantity, cart.id]
+      [userId, cart.itemId, cart.quantity, cart.id]
     );
   }
 }

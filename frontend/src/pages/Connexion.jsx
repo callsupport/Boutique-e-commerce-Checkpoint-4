@@ -53,7 +53,7 @@ function Connexion() {
             />
             <div className="flex flex-row text-left ">
               <Link
-                to="/"
+                to="/creation"
                 className="text-darkblue font-semibold text-sm ml-32 underline decoration-2 decoration-main-light md:ml-[95%]"
               >
                 M'inscrire

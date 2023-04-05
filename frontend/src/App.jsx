@@ -14,6 +14,8 @@ import Films from "./pages/Films";
 import Chargeurs from "./pages/Chargeurs";
 import AllCategories from "./pages/AllCategories";
 import Panier from "./pages/Panier";
+import MonCompte from "./pages/MonCompte";
+import Confirmation from "./pages/Confirmation";
 
 import FAQ from "./pages/FAQ";
 
@@ -28,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/creation" element={<Creation />} />
           <Route path="/Connexion" element={<Connexion />} />
+          <Route path="/MonCompte" element={<MonCompte />} />
           <Route path="/Accueil" element={<Categories />} />
           <Route path="/Logout" element={<Logout />} />
           <Route path="/categories" element={<Products />} />
@@ -36,6 +39,7 @@ function App() {
           <Route path="/chargeurs" element={<Chargeurs />} />
           <Route path="/tous" element={<AllCategories />} />
           <Route path="/panier" element={<Panier />} />
+          <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
         <ToastContainer />

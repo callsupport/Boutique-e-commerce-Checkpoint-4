@@ -36,7 +36,7 @@ function Navbar() {
               className="md:hidden w-20 max-w-[40%] mr-4"
             />
           </Link>
-          <Link to="/monpanier">
+          <Link to="/panier">
             <img
               src={Union}
               alt="union"
