@@ -12,7 +12,7 @@ function MonCompe() {
         La page est en construction mais en attendant vous pouvez prendre un
         petit café !
       </h1>
-      <p className="mt-[33%]">
+      <p className=" mt-[33%]">
         <CoffeeMachine />
       </p>
 

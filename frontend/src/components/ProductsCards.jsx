@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,13 @@ function ProductsCards({ name, description, price, category, image }) {
   const selectedimage = `${image}`;
 
   const [addedToCart, setAddedToCart] = useState(false);
-  const [product] = useState([]);
+  const [product, setProducts] = useState([]);
+
+  useEffect(() => {
+    expressAPI.get(`/produits`).then((res) => {
+      setProducts(res.data);
+    });
+  }, []);
 
   const handleAddToCart = ({ userId, itemId, quantity }) => {
     expressAPI
