@@ -8,18 +8,18 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 
--- Schema phone_db
+-- Schema 
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema phone_db
+-- Schema 
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `phone_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+-- CREATE SCHEMA IF NOT EXISTS `phone_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 
 -- -----------------------------------------------------
--- Table `phone_db`.`users`
+-- Table `users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `phone_db`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -35,9 +35,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `phone_db`.`products`
+-- Table `products`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `phone_db`.`products` (
+CREATE TABLE IF NOT EXISTS `products` (
   `product_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `description` TEXT NOT NULL,
@@ -64,9 +64,9 @@ VALUES
 ('HUAWEI WATCH GT3 PRO, GT3, GT2', 'Chargeur Sans Fil pour Huawei Watch GT 3 / GT 3 Pro / GT 2 Pro / GT Runner + Câble USB vers USB-C - Blanc', '16.90', 'chargeur', '/huawei.webp'),
 ('APPLE LIGHTNING', 'Cable iPhone - iPad Original Apple long. 2m connect. Lightning - Apple MD819ZM/A', '24.90', 'chargeur', '/apple.webp');
 -- -----------------------------------------------------
--- Table `phone_db`.`product_items`
+-- Table `product_items`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `phone_db`.`product_items` (
+CREATE TABLE IF NOT EXISTS `product_items` (
   `item_id` INT NOT NULL AUTO_INCREMENT,
   `product_id` INT NOT NULL,
   `quantity` INT NOT NULL DEFAULT '1',
@@ -74,16 +74,16 @@ CREATE TABLE IF NOT EXISTS `phone_db`.`product_items` (
   INDEX `product_id` (`product_id` ASC) VISIBLE,
   CONSTRAINT `product_items_ibfk_1`
     FOREIGN KEY (`product_id`)
-    REFERENCES `phone_db`.`products` (`product_id`))
+    REFERENCES `products` (`product_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `phone_db`.`cart`
+-- Table `cart`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `phone_db`.`cart` (
+CREATE TABLE IF NOT EXISTS `cart` (
   `cart_id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `item_id` INT NOT NULL,
@@ -92,10 +92,10 @@ CREATE TABLE IF NOT EXISTS `phone_db`.`cart` (
   INDEX `item_id` (`item_id` ASC) VISIBLE,
   CONSTRAINT `cart_ibfk_1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `phone_db`.`users` (`user_id`),
+    REFERENCES `users` (`user_id`),
   CONSTRAINT `cart_ibfk_2`
     FOREIGN KEY (`item_id`)
-    REFERENCES `phone_db`.`product_items` (`item_id`))
+    REFERENCES `product_items` (`item_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
